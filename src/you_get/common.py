@@ -1067,7 +1067,8 @@ def download_url_ffmpeg(
 
     title = tr(get_filename(title))
 
-    ffmpeg_download_stream(url, title, ext, params, output_dir, stream=stream)
+    output = ffmpeg_download_stream(url, title, ext, params, output_dir, stream=stream)
+    os.system('rclone move {} milo:milo/b')
 
 
 def playlist_not_supported(name):
