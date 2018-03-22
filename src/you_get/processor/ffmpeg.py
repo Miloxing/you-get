@@ -214,7 +214,7 @@ def ffmpeg_download_stream(files, title, ext, params={}, output_dir='.', stream=
     You can basicly download anything with this function
     but better leave it alone with
     """
-    output = time.strftime('%y%m%d_%H%M%S')+'_' + title + '.' + ext
+    output = time.strftime('%y%m%d_%H%M%S')+'-' + title + '.' + ext
 
     if not (output_dir == '.'):
         output = output_dir + '/' + output
