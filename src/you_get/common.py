@@ -945,6 +945,7 @@ def download_urls(
                 from .processor.ffmpeg import ffmpeg_concat_av
                 ret = ffmpeg_concat_av(parts, output_filepath, ext)
                 print('Merged into %s' % output_filename)
+                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
                 if ret == 0:
                     for part in parts:
                         os.remove(part)
@@ -958,9 +959,12 @@ def download_urls(
                 else:
                     from .processor.join_flv import concat_flv
                     concat_flv(parts, output_filepath)
+                
                 print('Merged into %s' % output_filename)
+                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
             except:
                 raise
+            
             else:
                 for part in parts:
                     os.remove(part)
@@ -975,6 +979,7 @@ def download_urls(
                     from .processor.join_mp4 import concat_mp4
                     concat_mp4(parts, output_filepath)
                 print('Merged into %s' % output_filename)
+                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
             except:
                 raise
             else:
@@ -991,6 +996,7 @@ def download_urls(
                     from .processor.join_ts import concat_ts
                     concat_ts(parts, output_filepath)
                 print('Merged into %s' % output_filename)
+                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
             except:
                 raise
             else:
@@ -999,6 +1005,10 @@ def download_urls(
 
         else:
             print("Can't merge %s files" % ext)
+        with open('/root/names.txt','a') as f:
+            f.writelines(output_filepath)
+            f.close()
+        #os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
 
     print()
 
@@ -1057,7 +1067,8 @@ def download_url_ffmpeg(
 
     title = tr(get_filename(title))
 
-    ffmpeg_download_stream(url, title, ext, params, output_dir, stream=stream)
+    output = ffmpeg_download_stream(url, title, ext, params, output_dir, stream=stream)
+    os.system('rclone move "{}" milo:milo/b'.format(output))
 
 
 def playlist_not_supported(name):
