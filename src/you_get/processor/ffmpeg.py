@@ -250,7 +250,7 @@ def ffmpeg_download_stream(files, title, ext, params={}, output_dir='.', stream=
         except:
             pass
 
-    return True
+    return output
 
 
 def ffmpeg_concat_audio_and_video(files, output, ext):
