@@ -5,6 +5,7 @@ import os.path
 import subprocess
 from ..util.strings import parameterize
 from ..common import print_more_compatible as print
+import time
 
 try:
     from subprocess import DEVNULL
@@ -213,7 +214,7 @@ def ffmpeg_download_stream(files, title, ext, params={}, output_dir='.', stream=
     You can basicly download anything with this function
     but better leave it alone with
     """
-    output = title + '.' + ext
+    output = time.strftime('%y%m%d_%H%M%S')+'_' + title + '.' + ext
 
     if not (output_dir == '.'):
         output = output_dir + '/' + output
