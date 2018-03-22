@@ -861,7 +861,7 @@ def get_output_filename(urls, title, ext, output_dir, merge):
                 merged_ext = 'mkv'
             else:
                 merged_ext = 'ts'
-    return '%s.%s' % (title, merged_ext)
+    return '%s-%s.%s' % (time.strftime('%y%m%d_%H%M%S'),title, merged_ext)
 
 def print_user_agent(faker=False):
     urllib_default_user_agent = 'Python-urllib/%d.%d' % sys.version_info[:2]
@@ -945,7 +945,7 @@ def download_urls(
                 from .processor.ffmpeg import ffmpeg_concat_av
                 ret = ffmpeg_concat_av(parts, output_filepath, ext)
                 print('Merged into %s' % output_filename)
-                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
+                os.system('rclone move "{}" milo:milo/b'.format(output_filepath))
                 if ret == 0:
                     for part in parts:
                         os.remove(part)
@@ -961,7 +961,7 @@ def download_urls(
                     concat_flv(parts, output_filepath)
                 
                 print('Merged into %s' % output_filename)
-                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
+                os.system('rclone move "{}" milo:milo/b'.format(output_filepath))
             except:
                 raise
             
@@ -979,7 +979,7 @@ def download_urls(
                     from .processor.join_mp4 import concat_mp4
                     concat_mp4(parts, output_filepath)
                 print('Merged into %s' % output_filename)
-                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
+                os.system('rclone move "{}" milo:milo/b'.format(output_filepath))
             except:
                 raise
             else:
@@ -996,7 +996,7 @@ def download_urls(
                     from .processor.join_ts import concat_ts
                     concat_ts(parts, output_filepath)
                 print('Merged into %s' % output_filename)
-                os.system('rclone move "/root/b/d/{}" milo:milo/b'.format(output_filename))
+                os.system('rclone move "{}" milo:milo/b'.format(output_filepath))
             except:
                 raise
             else:
