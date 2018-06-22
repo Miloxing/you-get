@@ -66,14 +66,15 @@ def douyutv_download(url, output_dir = '.', merge = True, info_only = False, **k
 
     title = data.get('room_name')
     show_status = data.get('show_status')
+    nickname=data.get('nickname')
     if show_status is not "1":
         raise ValueError("The live stream is not online! (Errno:%s)" % server_status)
 
     real_url = data.get('rtmp_url') + '/' + data.get('rtmp_live')
 
-    print_info(site_info, title, 'flv', float('inf'))
+    print_info(site_info, nickname, title, 'flv', float('inf'))
     if not info_only:
-        download_url_ffmpeg(real_url, title, 'flv', params={}, output_dir = output_dir, merge = merge)
+        download_url_ffmpeg(real_url, nickname, title, 'flv', params={}, output_dir = output_dir, merge = merge)
 
 site_info = "douyu.com"
 download = douyutv_download
