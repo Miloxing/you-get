@@ -208,13 +208,13 @@ def ffmpeg_concat_mp4_to_mp4(files, output='output.mp4'):
         os.remove(file + '.ts')
     return True
 
-def ffmpeg_download_stream(files, title, ext, params={}, output_dir='.', stream=True):
+def ffmpeg_download_stream(files, nickname, title, ext, params={}, output_dir='.', stream=True):
     """str, str->True
     WARNING: NOT THE SAME PARMS AS OTHER FUNCTIONS!!!!!!
     You can basicly download anything with this function
     but better leave it alone with
     """
-    output = time.strftime('%y%m%d_%H%M%S')+'-' + title + '.' + ext
+    output = time.strftime('%y%m%d_%H%M%S')+'-' + nickname + '-' + title + '.' + ext
 
     if not (output_dir == '.'):
         output = output_dir + '/' + output
