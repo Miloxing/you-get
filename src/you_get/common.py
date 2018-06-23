@@ -838,7 +838,7 @@ class DummyProgressBar:
         pass
 
 
-def get_output_filename(urls, title, ext, output_dir, merge):
+def get_output_filename(urls, nickname, title, ext, output_dir, merge):
     # lame hack for the --output-filename option
     global output_filename
     if output_filename:
@@ -861,7 +861,7 @@ def get_output_filename(urls, title, ext, output_dir, merge):
                 merged_ext = 'mkv'
             else:
                 merged_ext = 'ts'
-    return '%s-%s.%s' % (time.strftime('%y%m%d_%H%M%S'),title, merged_ext)
+    return '%s-%s-%s.%s' % (time.strftime('%y%m%d_%H%M%S'),nickname,title, merged_ext)
 
 def print_user_agent(faker=False):
     urllib_default_user_agent = 'Python-urllib/%d.%d' % sys.version_info[:2]
@@ -897,7 +897,7 @@ def download_urls(
             pass
 
     title = tr(get_filename(title))
-    output_filename = get_output_filename(urls, title, ext, output_dir, merge)
+    output_filename = get_output_filename(urls, nickname, title, ext, output_dir, merge)
     output_filepath = os.path.join(output_dir, output_filename)
 
     if total_size:
@@ -1038,7 +1038,7 @@ def download_rtmp_url(
 
 
 def download_url_ffmpeg(
-    url, title, ext, params={}, total_size=0, output_dir='.', refer=None,
+    url, nickname, title, ext, params={}, total_size=0, output_dir='.', refer=None,
     merge=True, faker=False, stream=True
 ):
     assert url
@@ -1068,7 +1068,7 @@ def download_url_ffmpeg(
     title = tr(get_filename(title))
 
     output = ffmpeg_download_stream(url, title, ext, params, output_dir, stream=stream)
-    os.system('rclone move "{}" milo:milo/b'.format(output))
+    os.system('rclone move "{}" milo:milo/b/"{}"'.format(output,nickname))
 
 
 def playlist_not_supported(name):
