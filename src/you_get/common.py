@@ -1156,6 +1156,7 @@ def print_info(site_info, nickname, title, type, size, **kwargs):
         type_info = 'Unknown type (%s)' % type
 
     maybe_print('Site:      ', site_info)
+    maybe_print('Name:      ', nickname)
     maybe_print('Title:     ', unescape_html(tr(title)))
     print('Type:      ', type_info)
     if type != 'm3u8':
