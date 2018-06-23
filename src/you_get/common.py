@@ -1077,10 +1077,10 @@ def playlist_not_supported(name):
     return f
 
 
-def print_info(site_info, title, type, size, **kwargs):
+def print_info(site_info, nickname, title, type, size, **kwargs):
     if json_output:
         json_output_.print_info(
-            site_info=site_info, title=title, type=type, size=size
+            site_info=site_info, nickname=nickname, title=title, type=type, size=size
         )
         return
     if type:
