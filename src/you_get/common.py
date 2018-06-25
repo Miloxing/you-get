@@ -142,9 +142,7 @@ fake_headers = {
     'Accept-Charset': 'UTF-8,*;q=0.5',
     'Accept-Encoding': 'gzip,deflate,sdch',
     'Accept-Language': 'en-US,en;q=0.8',
-    'Cookie': 'dy_did=848ef686b1d015130d28930c00061501; acf_did=848ef686b1d015130d28930c00061501; acf_uid=5550012; acf_username=auto_7NcKZj9sbL; acf_nickname=Miloxin; acf_ltkid=46925255; acf_auth=04177US8GlRYrffx%2FxC70O2xu9AzeeHdnHB0CvDNI5xOmu3TpnkNE22FKfXEtksQ09gdkVShAotxbFP2JSw9m%2FFgB61rzl2lbLmvG4utauuQUj%2FXdl6ldexlB73A; wan_auth37wan=cf90b2bc4275WXWMzUeA%2B9d716jEMK4MMrQgNVrRUAWOaxLia6EwPRkKtBiPR5UBpKnKb5Z1ty%2FFPMZCAyKKIqmKh3GGcHsoqM2uwO2N6Z1htd4%2F; acf_own_room=0; acf_groupid=1; acf_phonestatus=1; acf_ct=0; acf_biz=1; acf_stk=f15da788b87af2d8; smidV2=201806231738265459c45139fe48eadbeb9f4bafc48b1500dad39bf8a695400; loginrefer=pt_eigka7153a; Hm_lvt_e99aee90ec1b2106afe7ec3b199020a7=1529806868,1529808515,1529815866,1529923279; PHPSESSID=cki1pqf6r170a6t3gcblaboka4; Hm_lpvt_e99aee90ec1b2106afe7ec3b199020a7=1529924010',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36',  # noqa
-    'Host': 'www.douyu.com'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0',  # noqa
 }
 
 if sys.stdout.isatty():
