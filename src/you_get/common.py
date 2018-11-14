@@ -14,6 +14,8 @@ from http import cookiejar
 from importlib import import_module
 from urllib import request, parse, error
 
+import threading
+
 from .version import __version__
 from .util import log, term
 from .util.git import get_version
