@@ -1067,7 +1067,42 @@ def download_url_ffmpeg(
 
     title = tr(get_filename(title))
 
-    output = ffmpeg_download_stream(url, nickname, title, ext, params, output_dir, stream=stream)
+    filename = ffmpeg_download_stream(url, nickname, title, ext, params, output_dir, stream=stream)
+    downThread = threading.Thread(
+                            target=upload,
+                            name=str(filename),
+                            args=(filename,output_dir,nickname,),
+                            daemon=True
+                    );
+
+                    downThread.start();
+    
+  
+def upload(filename,output_dir,nickname):
+    jishu=0;
+    output = output_dir + '/' + filename
+    change =output_dir + '/' + 'waitting'+filename
+    os.system('ffmpeg -i "{}" -y -vcodec copy -acodec copy "{}"'.format(output,change))
+    os.system('rm -rf "{}"'.format(output))
+    os.system('yamdi -i "{}" -o "{}"'.format(change,output))
+    os.system('rm -rf "{}"'.format(change))
+    while True:
+        wait(0.5);
+        os.system('rclone move "{}" milo:milo/b/"{}"'.format(output,nickname))
+        if(not exists(sPath)):
+            log.info('{}存储成功..'.format(sName));
+            if(room.ii == 0):
+                room.ii = 1
+            break;
+        else:
+            if(jishu>=10):
+                print('重试多次失败，请手动检查');
+                with open('/root/names.txt','a') as f:
+                    f.writelines(sName);
+                    f.close;
+                    break;
+            jishu+=1;
+            print('存储失败，重新存储..\n')
 
 
 def playlist_not_supported(name):
