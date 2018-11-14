@@ -216,6 +216,7 @@ def ffmpeg_download_stream(files, nickname, title, ext, params={}, output_dir='.
     """
     print(nickname)
     output = time.strftime('%y%m%d_%H%M%S')+ '-' + nickname + '-' + title + '.' + ext
+    filename =output
 
     if not (output_dir == '.'):
         output = output_dir + '/' + output
@@ -251,7 +252,7 @@ def ffmpeg_download_stream(files, nickname, title, ext, params={}, output_dir='.
         except:
             pass
 
-    return output
+    return filename
 
 
 def ffmpeg_concat_audio_and_video(files, output, ext):
