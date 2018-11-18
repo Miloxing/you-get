@@ -1091,8 +1091,8 @@ def upload(filename,output_dir,nickname):
     while True:
         wait(0.5);
         os.system('rclone move "{}" milo:milo/b/"{}"'.format(output,nickname))
-        if(not exists(sPath)):
-            log.info('{}存储成功..'.format(sName));
+        if(not exists(output)):
+            log.info('{}存储成功..'.format(filename));
             if(room.ii == 0):
                 room.ii = 1
             break;
@@ -1100,7 +1100,8 @@ def upload(filename,output_dir,nickname):
             if(jishu>=10):
                 print('重试多次失败，请手动检查');
                 with open('/root/names.txt','a') as f:
-                    f.writelines(sName);
+                    f.writelines(output);
+                    f.write('\n')
                     f.close;
                     break;
             jishu+=1;
