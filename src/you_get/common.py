@@ -1074,7 +1074,7 @@ def download_url_ffmpeg(
                             target=upload,
                             name=str(filename),
                             args=(filename,output_dir,nickname,),
-                            daemon=True
+                            #daemon=True
     );
 
     downThread.start();
