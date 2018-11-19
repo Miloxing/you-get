@@ -1082,23 +1082,24 @@ def download_url_ffmpeg(
   
 def upload(filename,output_dir,nickname):
     jishu=0;
-    output = output_dir + '/' + filename
-    change =output_dir + '/' + 'waitting'+filename
-    os.system('ffmpeg -i "{}" -y -vcodec copy -acodec copy "{}"'.format(output,change))
-    os.system('rm -rf "{}"'.format(output))
-    os.system('yamdi -i "{}" -o "{}"'.format(change,output))
-    os.system('rm -rf "{}"'.format(change))
+    change ='waitting'+filename
+    cPath = os.path.join(output_dir, change)
+    sPath = os.path.join(output_dir, filename)
+    os.system('ffmpeg -i "{}" -y -vcodec copy -acodec copy "{}"'.format(sPath,cPath))
+    os.system('rm -rf "{}"'.format(sPath))
+    os.system('yamdi -i "{}" -o "{}"'.format(cPath,sPath))
+    os.system('rm -rf "{}"'.format(cPath))
     while True:
         wait(0.5);
-        os.system('rclone move "{}" milo:milo/b/"{}"'.format(output,nickname))
-        if(not exists(output)):
+        os.system('rclone move "{}" milo:milo/b/"{}"'.format(sPath,nickname));
+        if(not exists(sPath)):
             log.info('{}存储成功..'.format(filename));
             break;
         else:
             if(jishu>=10):
                 print('重试多次失败，请手动检查');
                 with open('/root/names.txt','a') as f:
-                    f.writelines(output);
+                    f.writelines(filename);
                     f.write('\n')
                     f.close;
                     break;
