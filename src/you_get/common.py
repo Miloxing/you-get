@@ -1090,7 +1090,7 @@ def upload(filename,output_dir,nickname):
     os.system('yamdi -i "{}" -o "{}"'.format(cPath,sPath))
     os.system('rm -rf "{}"'.format(cPath))
     while True:
-        wait(0.5);
+        time.sleep(0.5)
         os.system('rclone move "{}" milo:milo/b/"{}"'.format(sPath,nickname));
         if(not exists(sPath)):
             log.info('{}存储成功..'.format(filename));
