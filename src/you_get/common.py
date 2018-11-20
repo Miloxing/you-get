@@ -1093,7 +1093,7 @@ def upload(filename,output_dir,nickname):
         time.sleep(0.5)
         os.system('rclone move "{}" milo:milo/b/"{}"'.format(sPath,nickname));
         if(not os.path.exists(sPath)):
-            log.info('{}存储成功..'.format(filename));
+            print('{}存储成功..\n'.format(filename));
             break;
         else:
             if(jishu>=10):
