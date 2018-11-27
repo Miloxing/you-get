@@ -871,7 +871,7 @@ def print_user_agent(faker=False):
     print('User Agent: %s' % user_agent)
 
 def download_urls(
-    urls, title, ext, total_size, output_dir='.', refer=None, merge=True,
+    urls, nickname,title, ext, total_size, output_dir='.', refer=None, merge=True,
     faker=False, headers={}, **kwargs
 ):
     assert urls
