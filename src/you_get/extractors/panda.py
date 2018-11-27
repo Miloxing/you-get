@@ -28,7 +28,7 @@ def panda_download(url, info_only=False, **kwargs):
     data = api_json['data']
     
     sTime = time.strftime('%y%m%d_%H%M%S')
-    nickname =data[hostinfo']['name']
+    nickname =data['hostinfo']['name']
     title = sTime+'-'+data['hostinfo']['name']+'-'+data['roominfo']['name']
     room_key = data['videoinfo']['room_key']
     plflag = data['videoinfo']['plflag'].split('_')
