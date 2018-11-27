@@ -28,7 +28,7 @@ def panda_download(url, info_only=False, **kwargs):
     data = api_json['data']
     
     sTime = time.strftime('%y%m%d_%H%M%S')
-    
+    nickname =data[hostinfo']['name']
     title = sTime+'-'+data['hostinfo']['name']+'-'+data['roominfo']['name']
     room_key = data['videoinfo']['room_key']
     plflag = data['videoinfo']['plflag'].split('_')
@@ -46,7 +46,7 @@ def panda_download(url, info_only=False, **kwargs):
         'http://pl{}.live.panda.tv/live_panda/{}.flv?sign={}&ts={}&'
         'rid={}'.format(plflag[1], room_key, sign, ts, rid)
     )
-    print_info(site_info, title, 'flv', float('inf'))
+    print_info(site_info,nickname, title, 'flv', float('inf'))
     if not info_only:
         download_urls([real_url], title, 'flv', None, output_dir, merge = merge)
 
