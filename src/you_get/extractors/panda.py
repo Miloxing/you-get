@@ -29,7 +29,7 @@ def panda_download(url, output_dir='.',merge = True,info_only=False, **kwargs):
     
     sTime = time.strftime('%y%m%d_%H%M%S')
     nickname =data['hostinfo']['name']
-    title = sTime+'-'+data['hostinfo']['name']+'-'+data['roominfo']['name']
+    title = data['roominfo']['name'] # sTime+'-'+data['hostinfo']['name']+'-'+
     room_key = data['videoinfo']['room_key']
     plflag = data['videoinfo']['plflag'].split('_')
     status = data['videoinfo']['status']
