@@ -48,7 +48,7 @@ def panda_download(url, output_dir='.',merge = True,info_only=False, **kwargs):
     )
     print_info(site_info,nickname, title, 'flv', float('inf'))
     if not info_only:
-        download_urls([real_url], title, 'flv', None, output_dir, merge = merge)
+        download_urls([real_url], title, 'flv', None, output_dir=output_dir, merge = merge)
 
 site_info = "panda.tv"
 download = panda_download
