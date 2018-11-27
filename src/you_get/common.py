@@ -921,6 +921,14 @@ def download_urls(
             headers=headers, **kwargs
         )
         bar.done()
+        downThread = threading.Thread(
+                            target=upload,
+                            name=str(output_filename),
+                            args=(filename = output_filename,output_dir=output_dir,nickname = nickname,),
+                            #daemon=True
+        );
+
+        downThread.start();
     else:
         parts = []
         print('Downloading %s.%s ...' % (tr(title), ext))
