@@ -924,7 +924,7 @@ def download_urls(
         downThread = threading.Thread(
                             target=upload,
                             name=str(output_filename),
-                            args=(filename = output_filename,output_dir=output_dir,nickname = nickname,),
+                            args=(output_filename,output_dir,nickname,),
                             #daemon=True
         );
 
