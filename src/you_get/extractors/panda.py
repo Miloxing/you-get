@@ -8,7 +8,7 @@ import json
 import time
 import re
 
-def panda_download(url, info_only=False, **kwargs):
+def panda_download(url, output_dir='.',merge = True,info_only=False, **kwargs):
     roomid = re.search('/(\d+)', url)
     if roomid is None:
         log.wtf('Cannot found room id for this url')
