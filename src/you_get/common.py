@@ -15,6 +15,8 @@ from importlib import import_module
 from urllib import request, parse, error
 
 import threading
+import random
+upwork = 0
 
 from .version import __version__
 from .util import log, term
@@ -1093,10 +1095,16 @@ def upload(filename,output_dir,nickname):
     change ='waitting'+filename
     cPath = os.path.join(output_dir, change)
     sPath = os.path.join(output_dir, filename)
+    global upwork
+    while upwork:
+        time.sleep(random.randint(0,20))
+        global upwork
+    upwork = 1
     os.system('ffmpeg -i "{}" -y -vcodec copy -acodec copy "{}"'.format(sPath,cPath))
     os.system('rm -rf "{}"'.format(sPath))
     os.system('yamdi -i "{}" -o "{}"'.format(cPath,sPath))
     os.system('rm -rf "{}"'.format(cPath))
+    upwork = 0
     while True:
         time.sleep(0.5)
         os.system('rclone move "{}" milo:milo/b/"{}"'.format(sPath,nickname));
