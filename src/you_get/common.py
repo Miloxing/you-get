@@ -1098,7 +1098,6 @@ def upload(filename,output_dir,nickname):
     global upwork
     while upwork:
         time.sleep(random.randint(0,20))
-        global upwork
     upwork = 1
     os.system('ffmpeg -i "{}" -y -vcodec copy -acodec copy "{}"'.format(sPath,cPath))
     os.system('rm -rf "{}"'.format(sPath))
