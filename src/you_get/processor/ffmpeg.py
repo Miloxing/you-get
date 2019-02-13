@@ -239,6 +239,7 @@ def ffmpeg_download_stream(files, nickname, title, ext, params={}, output_dir='.
                 ffmpeg_params.append(k)
                 ffmpeg_params.append(v)
 
+    ffmpeg_params += ['-fs', '1500000000']
     ffmpeg_params.append(output)
 
     print(' '.join(ffmpeg_params))
