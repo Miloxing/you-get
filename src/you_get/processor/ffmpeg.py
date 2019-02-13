@@ -253,7 +253,7 @@ def ffmpeg_download_stream(files, nickname, title, ext, params={}, output_dir='.
         except:
             pass
 
-    return filename
+    return output
 
 
 def ffmpeg_concat_audio_and_video(files, output, ext):
