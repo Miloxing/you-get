@@ -64,9 +64,12 @@ def douyutv_download(url, output_dir = '.', merge = True, info_only = False, **k
     if server_status is not 0:
         raise ValueError("Server returned error:%s" % server_status)
 
+    rstr = r"[\/\\\:\*\?\"\<\>\|\- ]"
     title = data.get('room_name')
+    title = re.sub(rstr,"_",title)
     show_status = data.get('show_status')
     nickname=data.get('nickname')
+    nickname=re.sub(rstr,"_",nickname)
     if show_status is not "1":
         raise ValueError("The live stream is not online! (Errno:%s)" % server_status)
 
