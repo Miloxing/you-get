@@ -1069,7 +1069,11 @@ def download_url_ffmpeg(
 
     title = tr(get_filename(title))
 
-    filename = ffmpeg_download_stream(url, nickname, title, ext, params, output_dir, stream=stream)
+    output = ffmpeg_download_stream(url, nickname, title, ext, params, output_dir, stream=stream)
+    os.system('mv "{}" /root/b/'.format(output))
+    print('%s 下载完成' % nickname)
+    
+    '''
     downThread = threading.Thread(
                             target=upload,
                             name=str(filename),
@@ -1104,8 +1108,9 @@ def upload(filename,output_dir,nickname):
                     f.close;
                     break;
             jishu+=1;
-            print('存储失败，重新存储..\n')
-
+            print('存储失败，重新存储..\n)
+            
+    '''
 
 def playlist_not_supported(name):
     def f(*args, **kwargs):
