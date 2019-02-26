@@ -23,6 +23,9 @@ from .util.strings import get_filename, unescape_html
 from . import json_output as json_output_
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
+sys.path.append('/root/u')
+from getip import *
+
 SITES = {
     '163'              : 'netease',
     '56'               : 'w56',
@@ -409,7 +412,8 @@ def get_content(url, headers={}, decoded=True):
 
     logging.debug('get_content: %s' % url)
 
-    req = request.Request(url, headers=headers)
+    proxies = getip()
+    req = request.Request(url, headers=headers,proxies=proxies)
     if cookies:
         cookies.add_cookie_header(req)
         req.headers.update(req.unredirected_hdrs)
