@@ -51,7 +51,7 @@ def douyutv_download(url, output_dir = '.', merge = True, info_only = False, **k
     if room_id == "0":
         room_id = url[url.rfind('/')+1:]
 
-    api_url = "http://www.douyutv.com/api/v1/"
+    api_url = "http://capi.douyucdn.cn/api/v1/"
     args = "room/%s?aid=wp&client_sys=wp&time=%d" % (room_id, int(time.time()))
     auth_md5 = (args + "zNzMV1y4EMxOHS6I5WKm").encode("utf-8")
     auth_str = hashlib.md5(auth_md5).hexdigest()
