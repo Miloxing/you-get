@@ -412,10 +412,6 @@ def get_content(url, headers={}, decoded=True):
 
     logging.debug('get_content: %s' % url)
 
-    proxies = getip()
-    proxy_handler = urllib.request.ProxyHandler(proxies)
-    opener = urllib.request.build_opener(proxy_handler)
-    urllib.request.install_opener(opener)
     req = request.Request(url, headers=headers)
     if cookies:
         cookies.add_cookie_header(req)
